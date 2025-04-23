@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>🎁 CADEAU POUR TOI 🎁</title>
+  <style>
+    body {
+      background-color: #ffcc00;
+      text-align: center;
+      font-family: 'Comic Sans MS', cursive;
+      overflow: hidden;
+    }
+    h1 {
+      color: red;
+      font-size: 48px;
+      animation: flash 1s infinite;
+    }
+    p {
+      font-size: 24px;
+    }
+    button {
+      padding: 20px;
+      font-size: 20px;
+      background-color: red;
+      color: white;
+      border: none;
+      cursor: pointer;
+      animation: shake 0.5s infinite;
+    }
+    @keyframes flash {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    .popup {
+      position: fixed;
+      background-color: white;
+      color: black;
+      border: 3px dashed red;
+      padding: 15px;
+      font-size: 18px;
+      z-index: 9999;
+      animation: fadeIn 0.5s ease, floaty 3s linear infinite;
+      box-shadow: 0 0 10px red;
+      border-radius: 12px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.5); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes floaty {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <h1>🎉 TU AS ÉTÉ SÉLECTIONNÉ 🎉</h1>
+  <p>Tu viens de débloquer une offre EXCEPTIONNELLE !</p>
+  <button onclick="startPopups()">OBTENIR MON CADEAU</button>
+
+  <audio id="audio" loop>
+    <source src="https://www.myinstants.com/media/sounds/jeopardy.mp3" type="audio/mpeg">
+
+
+  </audio>
+
+  <script>
+    function createPopup() {
+        const messages = [
+  "🧠 Test de QI gratuit : Tu es plus intelligent que Peter !",
+  "👀 FBI t’observe… Clique pour te cacher vite !",
+  "🎧 Un AirTag inconnue te suit ! 😱",
+  "💳 Ta carte a été utilisée à Dubaï, vérifie vite !",
+  "🎬 Nouvelle sextape détectée dans ta galerie 📱",
+  "🔋 Ta batterie est à -2%, branche un chargeur mental 🔌",
+  "🤯 Mise à jour de ton cerveau disponible…",
+  "🐍 Peter a parlé dans ton dos, découvre la vérité 😤",
+  "🔮 Clique ici pour connaître ton avenir (spoiler : pas ouf)",
+  "🕋 Inscris-toi pour une omra offerte (ou presque 😅)",
+  "🚀 Elon Musk veut t’adopter pour coloniser Mars",
+  "🧴 Peter a commandé une crème pour cheveux sur ton compte",
+  "📲 Ton ex a screené ta story 18 fois aujourd'hui 😳",
+  "Mya Khalifa t'a envoyé un DM",
+  "Mr Naili est le Goat"
+];
+      const popup = document.createElement("div");
+      popup.classList.add("popup");
+      popup.innerText = messages[Math.floor(Math.random() * messages.length)];
+
+      popup.style.top = Math.random() * 80 + "%";
+      popup.style.left = Math.random() * 80 + "%";
+
+      document.body.appendChild(popup);
+      setTimeout(() => popup.remove(), 5000);
+    }
+
+    function startPopups() {
+      document.getElementById("audio").play();
+      setInterval(createPopup, 400);
+    }
+  </script>
+</body>
+</html>
